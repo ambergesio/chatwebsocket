@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script defer src="main.js"></script>
+</head>
+<body>
+        <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+        body {
+            margin: 2rem;
+            display: flex;
+                flex-flow: column;
+                justify-content: center;
+                align-items: center;
+                background-color: lightgrey;
+        }
+        .contenedor {
+            display: flex;
+                flex-flow: row wrap;
+                justify-content: center;
+        }
+        .bloque {
+            margin: .3rem;
+            padding: 2rem;
+            width: 460px;
+            text-align: left;
+            border-radius: .5rem;
+            background-color: rgb(235, 235, 235);
+        }
+        @media only screen and (max-width: 768px) {
+            .bloque {
+                display: flex;
+                flex-flow: column nowrap;
+                    justify-content: center;
+                    align-items: center;
+                text-align: center;
+            }
+        }
+        h1 {
+            font-family: 'Roboto';
+            font-weight: 400;
+        }
+        h3 {
+            font-family: 'Roboto';
+            font-size: 1rem;
+            font-weight: 300;
+        }
+        .inp_field {
+            margin: .6rem 0;
+            padding: .4rem;
+            display: flex;
+                flex-flow: column nowrap;
+            font-family: 'Roboto';
+            color: rgb(16, 22, 78);
+            font-size: .9rem;
+            border: none;
+            border-radius: .2rem;
+        }
+        .enviar {
+            margin: 1.7rem 0;
+            padding: .9rem 2rem;
+            display: flex;
+            font-size: .8rem;
+            color: white;
+            border: none;
+            border-radius: 1.8rem;
+            background-color: rgb(0, 119, 255);
+            transition: all .3s;
+        }
+        .enviar:hover {
+            background-color: rgb(0, 80, 172);
+        }
+        th {
+            padding: 0.6rem 1.1rem;
+            font-family: 'Roboto';
+            font-size: 1rem;
+            font-weight: 100;
+            text-align: left;
+            color: white;
+            background-color: rgb(63, 63, 63);
+            border-radius: .4rem;
+        }
+        .bold {
+            font-size: 1.2rem;
+            font-weight: 900;
+            background-color: black;
+        }
+        img {
+            height: 60px;
+            width: 60px;
+            border-radius: 12px;
+        }
+        .nohay {
+            padding: 1rem;
+            font-size: 1.3rem;
+            border-radius: .4rem;
+            background-color: rgb(255, 250, 228);
+        }
+        a {
+            font-family: 'Roboto';
+            font-size: .9rem;
+            text-decoration: none;
+        }
+        .mensajes {
+            padding:  1.3rem 0;
+            height: 200px;
+            width: 450px;
+            overflow: scroll;
+        }
+        .chat {
+            margin: .3rem;
+            padding: 2rem;
+            width: 460px;
+            display: flex;
+                flex-flow: row nowrap;
+            border-radius: .5rem;
+            background-color: rgb(235, 235, 235);
+        }
+        span {
+            color: rgb(121, 48, 0);
+            font-size: .9rem;
+        }
+        p {
+            margin: 0 0.1rem .7rem;
+            font-family: 'Roboto';
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: red;
+        }
+    </style>
+        <h1>GACECHAT - Centro de mensajes</h1>
+    </div>
+
+        <div class="chat">
+            <form id="cargarNuevoMensaje">
+                <input class="inp_field" type="text" id="email" placeholder="Ingresá tu email">
+                <div class="mensajes" id="menss"></div>
+                <input class="inp_field" type="text" id="mensaje" placeholder="ingresá tu mensaje"></input>
+                <input type="submit" value="Enviar mensaje" class="enviar">
+            </form>
+        </div>
+
+</body>
+</html>
