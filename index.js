@@ -20,9 +20,14 @@ app.use(express.static('public'));
 
 io.on('connection', (socket) => {
     socket.emit('mensajesEmitidos', mensajes);
-    socket.on('nuevoMensaje', (mensaje) => {
-        mensajes.unshift(mensaje);
-        console.log(mensaje);
+    socket.on('nuevoMensaje', (men) => {
+        let email = men.email;
+        let mensaje = men.mensaje;
+        let emailEdited = email.replace(/[<>{}:\=\/]/gi, '');
+        let mensajeEdited = mensaje.replace(/[<>{}:\=\/]/gi, '');
+        let menss = mensajeEdited.substring(0,140);
+        let editado = {...men, email: emailEdited, mensaje: menss};
+        mensajes.unshift(editado);
         io.sockets.emit('mensajesEmitidos', mensajes);
     });
 });
