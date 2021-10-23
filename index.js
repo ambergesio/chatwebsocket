@@ -3,32 +3,30 @@ const port = process.env.PORT || 8080;
 const { Server: HttpServer } = require('http');
 const { Server: SocketServer } = require('socket.io');
 
+const { getMensajes, saveMensajes } = require('./modulos/chat');
+
 const app = express();
 const httpServer = new HttpServer(app);
 const io = new SocketServer(httpServer);
 
-const mensajes = [
-    {
-    email: 'Centro de mensajes',
-    fecha: '0000/00/00',
-    hora: '00:00:00 AM',
-    mensaje: 'Chat inicializado'
-    }
-];
-
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 app.use(express.static('public'));
 
-io.on('connection', (socket) => {
-    socket.emit('mensajesEmitidos', mensajes);
-    socket.on('nuevoMensaje', (men) => {
+
+io.on('connection', async (socket) => {
+    const enviarMensajesAlFront = await getMensajes();
+    socket.emit('mensajesEmitidos', enviarMensajesAlFront);
+    socket.on('nuevoMensaje', async (men) => {
         let email = men.email;
         let mensaje = men.mensaje;
         let emailEdited = email.replace(/[<>{}:\=\/]/gi, '');
         let mensajeEdited = mensaje.replace(/[<>{}:\=\/]/gi, '');
         let menss = mensajeEdited.substring(0,140);
         let editado = {...men, email: emailEdited, mensaje: menss};
-        mensajes.unshift(editado);
-        io.sockets.emit('mensajesEmitidos', mensajes);
+        await saveMensajes(editado);
+        const enviarMensajesAlFront = await getMensajes();
+        io.sockets.emit('mensajesEmitidos', enviarMensajesAlFront);
     });
 });
 

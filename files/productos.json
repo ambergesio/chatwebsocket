@@ -1,0 +1,26 @@
+[
+  {
+    "nombre": "conejita",
+    "precio": 1300,
+    "thumbnail": "https://mununuras.ar/productos/conejita.jpg",
+    "id": 1
+  },
+  {
+    "nombre": "capitan america",
+    "precio": "1350",
+    "thumbnail": "https://mununuras.ar/productos/capamerica/capamerica.jpg",
+    "id": 2
+  },
+  {
+    "nombre": "catus maceta",
+    "precio": "550",
+    "thumbnail": "https://mununuras.ar/productos/cactus/cactus.jpg",
+    "id": 3
+  },
+  {
+    "nombre": "sirenita",
+    "precio": "1200",
+    "thumbnail": "https://mununuras.ar/productos/sirenita.jpg",
+    "id": 4
+  }
+]
