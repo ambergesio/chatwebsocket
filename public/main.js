@@ -5,7 +5,7 @@ const renderMensajes = (mensajes) => {
         return(`
             <div>
                 <strong>${mens.email}</strong> - <span>${mens.fecha} - ${mens.hora}</span> dijo:
-                <p>${mens.mensaje}</p>
+                <div class="cont_msj">${mens.mensaje}</div>
             </div>
         `);
     });
